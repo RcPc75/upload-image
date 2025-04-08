@@ -1,0 +1,30 @@
+<div class="uploader-container">
+  <h2>Image Uploader</h2>
+
+  <div class="upload-box">
+    <input type="file" #fileInput hidden (change)="onFileSelected($event)">
+    <button class="choose-btn" (click)="fileInput.click()">Choose File</button>
+    <button class="upload-btn" (click)="uploadImage()" [disabled]="!selectedFile">Upload</button>
+  </div>
+
+  <div *ngIf="previewUrl" class="preview-box">
+    <h4>Preview:</h4>
+    <img [src]="previewUrl" width="200">
+  </div>
+
+  <h3>Uploaded Images:</h3>
+  <ul class="image-list">
+    <li *ngFor="let img of uploadedImages">
+      <img [src]="img" class="thumb" />
+      <div class="actions">
+        <button (click)="viewImage(img)">View</button>
+        <button (click)="deleteImage(img)">Delete</button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Modal for viewing full image -->
+  <div class="modal" *ngIf="selectedPreviewImage" (click)="selectedPreviewImage = null">
+    <img [src]="selectedPreviewImage" class="modal-image" />
+  </div>
+</div>
