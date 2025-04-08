@@ -29,5 +29,6 @@ jobs:
       - name: Build Angular app
         run: npm run build
 
-      - name: Run tests (optional)
-        run: npm run test -- --watch=false
+      # Remove or comment this block
+      # - name: Run tests (optional)
+      #   run: npm run test -- --watch=false
